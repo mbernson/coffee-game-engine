@@ -1,10 +1,10 @@
 window.Ld48 =
-  Models: {}
-  Collections: {}
-  Views: {}
-  Routers: {}
+  Commands: {}
+  Display: {}
+  Entities: {}
+  Util: {}
   init: ->
-    console.log 'Hello from Backbone!'
+    console.log 'Ld48 init'
 
 # Shim for requestAnimationFrame
 window.requestAnimFrame = (->
@@ -15,9 +15,14 @@ window.requestAnimFrame = (->
         window.setTimeout(callback, 1000 / 60)
 )()
 
+window.currentTimeMilliseconds = (->
+    (window.performance && performance.now) ||
+    ->
+        new Date().getMilliseconds();
+)()
 
 document.addEventListener 'DOMContentLoaded', ->
-  Ld48.init();
+  Ld48.init()
   canvas = document.querySelector 'canvas'
 
   canvas.width = 1024
@@ -25,7 +30,6 @@ document.addEventListener 'DOMContentLoaded', ->
 
   game = window.game = new Ld48.Game(canvas)
 
-  console.log 'starting game'
   game.start()
 
   true
