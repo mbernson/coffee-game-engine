@@ -4,9 +4,28 @@ window.Ld48 =
   Views: {}
   Routers: {}
   init: ->
-    'use strict'
     console.log 'Hello from Backbone!'
 
-$ ->
-  'use strict'
+# Shim for requestAnimationFrame
+window.requestAnimFrame = (->
+    window.requestAnimationFrame       ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame    ||
+    (callback) ->
+        window.setTimeout(callback, 1000 / 60)
+)()
+
+
+document.addEventListener 'DOMContentLoaded', ->
   Ld48.init();
+  canvas = document.querySelector 'canvas'
+
+  canvas.width = 1024
+  canvas.height = 768
+
+  game = window.game = new Ld48.Game(canvas)
+
+  console.log 'starting game'
+  game.start()
+
+  true
