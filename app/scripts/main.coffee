@@ -7,29 +7,30 @@ window.Ld48 =
     console.log 'Ld48 init'
 
 # Shim for requestAnimationFrame
-window.requestAnimFrame = (->
+window.requestAnimFrame =
     window.requestAnimationFrame       ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame    ||
     (callback) ->
         window.setTimeout(callback, 1000 / 60)
-)()
 
-window.currentTimeMilliseconds = (->
+window.currentTimeMilliseconds =
     (window.performance && performance.now) ||
     ->
         new Date().getMilliseconds();
-)()
 
 document.addEventListener 'DOMContentLoaded', ->
-  Ld48.init()
-  canvas = document.querySelector 'canvas'
+    return false if mocha?
 
-  canvas.width = 1024
-  canvas.height = 768
+    Ld48.init()
 
-  game = window.game = new Ld48.Game(canvas)
+    canvas = document.querySelector 'canvas'
 
-  game.start()
+    canvas.width = 1024
+    canvas.height = 768
 
-  true
+    game = window.game = new Ld48.Game(canvas)
+
+    game.start()
+
+    true
