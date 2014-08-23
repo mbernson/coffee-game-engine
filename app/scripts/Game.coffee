@@ -14,10 +14,18 @@ class Ld30.Game
         @input_handler = new Ld30.InputHandler
 
     gameLoop: =>
+        this.handleInput()
         this.update()
         this.render()
 
+        # Start the next loop iteration
         requestAnimFrame(this.gameLoop) if @running
+
+    handleInput: ->
+        @input_handler.handle() # Fetch the current key events
+
+        while event = @input_handler.nextCommand()
+            event.execute(@player)
 
     deltaTime: 0
     runningTime: 0
@@ -29,7 +37,6 @@ class Ld30.Game
 
         console.log "time:", currentTime, "delta:", @deltaTime if @debug
 
-        @input_handler.handle(@player)
         @player.update(@deltaTime)
         this.updateEnemies()
 
@@ -44,7 +51,7 @@ class Ld30.Game
 
         console.log chunk
 
-        @running = false
+        @running = true
         this.gameLoop() # Kick off the game loop
 
     stop: ->
