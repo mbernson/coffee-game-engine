@@ -26,8 +26,8 @@ document.addEventListener 'DOMContentLoaded', ->
 
     canvas = document.querySelector 'canvas'
 
-    canvas.width = 1024
-    canvas.height = 768
+    canvas.width = 800
+    canvas.height = 600
 
     game = window.game = new Ld30.Game(canvas)
 
