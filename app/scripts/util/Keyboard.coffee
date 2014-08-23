@@ -19,18 +19,20 @@ class Ld48.Util.Keyboard
         window.addEventListener 'keydown', (event) =>
             this.onKeyDown event
 
-    LEFT: 37,
-    UP: 38,
-    RIGHT: 39,
-    DOWN: 40,
+    LEFT: 37
+    UP: 38
+    RIGHT: 39
+    DOWN: 40
 
-    Q: 81,
-    E: 69,
+    Q: 81
+    E: 69
 
-    H: 72,
-    N: 78,
+    H: 72
+    N: 78
 
-    W: 87,
-    A: 65,
-    S: 83,
+    W: 87
+    A: 65
+    S: 83
     D: 68
+
+    FIRE: @Q
