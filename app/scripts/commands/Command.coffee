@@ -1,2 +1,2 @@
-class Ld48.Commands.Command
+class Ld30.Commands.Command
     execute: ->

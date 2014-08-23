@@ -1,4 +1,4 @@
-class Ld48.Display.Chunk
+class Ld30.Display.Chunk
 	tiles: []
 	hierarchy: {}
 

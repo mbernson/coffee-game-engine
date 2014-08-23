@@ -1,4 +1,4 @@
-class Ld48.Commands.MoveCommand extends Ld48.Commands.Command
+class Ld30.Commands.MoveCommand extends Ld30.Commands.Command
     constructor: (@x, @y) ->
 
     execute: (actor) ->

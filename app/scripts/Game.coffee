@@ -1,4 +1,4 @@
-class Ld48.Game
+class Ld30.Game
     chunks: []
 
     imageSmoothing: false
@@ -10,8 +10,8 @@ class Ld48.Game
         @running = false
         @debug = true
 
-        @player = new Ld48.Entities.Player
-        @input_handler = new Ld48.InputHandler
+        @player = new Ld30.Entities.Player
+        @input_handler = new Ld30.InputHandler
 
     gameLoop: =>
         this.update()
@@ -39,8 +39,8 @@ class Ld48.Game
         @player.draw(@context)
 
     start: ->
-        chunk = new Ld48.Display.Chunk()
-        chunk.fill new Ld48.Display.Tile()
+        chunk = new Ld30.Display.Chunk()
+        chunk.fill new Ld30.Display.Tile()
 
         console.log chunk
 

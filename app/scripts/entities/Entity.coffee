@@ -1,4 +1,4 @@
-class Ld48.Entities.Entity
+class Ld30.Entities.Entity
     constructor: (@x = 0, @y = 0) ->
 
     update: (delta) ->

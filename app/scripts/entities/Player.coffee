@@ -1,4 +1,4 @@
-class Ld48.Entities.Player extends Ld48.Entities.Entity
+class Ld30.Entities.Player extends Ld30.Entities.Entity
     @direction = 0
 
     move: (x, y) ->

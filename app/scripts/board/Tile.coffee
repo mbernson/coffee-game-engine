@@ -1,4 +1,4 @@
-class Ld48.Display.Tile
+class Ld30.Display.Tile
     width: 16
     height: 16
 
@@ -10,7 +10,7 @@ class Ld48.Display.Tile
         [@sprite]
 
 
-Ld48.Tile::spritesheet = (->
+Ld30.Tile::spritesheet = (->
     img = new Image()
     img.src = 'images/spritesheet.png'
     img

@@ -1,3 +1,3 @@
-class Ld48.Commands.FireCommand extends Ld48.Commands.Command
+class Ld30.Commands.FireCommand extends Ld30.Commands.Command
     execute: (actor) ->
         actor.fire()

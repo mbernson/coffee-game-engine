@@ -1,8 +1,8 @@
 {
-  "name": "ld48",
+  "name": "Ld30",
   "version": "0.0.0",
-  "description": "My Ludum Dare 48 game",
-  "repository": "git@git.duckson.nl:mathijs/ld48.git",
+  "description": "My Ludum Dare 30 game",
+  "repository": "git@git.duckson.nl:mathijs/Ld30.git",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",

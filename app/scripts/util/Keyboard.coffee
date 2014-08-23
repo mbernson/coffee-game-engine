@@ -1,4 +1,4 @@
-class Ld48.Util.Keyboard
+class Ld30.Util.Keyboard
     pressed: {}
 
     listen: ->

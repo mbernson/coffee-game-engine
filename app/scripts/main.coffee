@@ -1,10 +1,10 @@
-window.Ld48 =
+window.Ld30 =
   Commands: {}
   Display: {}
   Entities: {}
   Util: {}
   init: ->
-    console.log 'Ld48 init'
+    console.log 'Ld30 init'
 
 # Shim for requestAnimationFrame
 window.requestAnimFrame =
@@ -22,14 +22,14 @@ window.currentTimeMilliseconds =
 document.addEventListener 'DOMContentLoaded', ->
     return false if mocha?
 
-    Ld48.init()
+    Ld30.init()
 
     canvas = document.querySelector 'canvas'
 
     canvas.width = 1024
     canvas.height = 768
 
-    game = window.game = new Ld48.Game(canvas)
+    game = window.game = new Ld30.Game(canvas)
 
     game.start()
 
