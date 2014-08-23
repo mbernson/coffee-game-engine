@@ -37,7 +37,10 @@ module.exports = function (grunt) {
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
-                files: ['test/spec/{,*/}*.coffee'],
+                files: [
+                    'test/spec/{,*/}*_spec.coffee',
+                    '<%= yeoman.app %>/scripts/{,*/}*.coffee'
+                ],
                 tasks: ['coffee:test']
             },
             livereload: {
@@ -60,7 +63,7 @@ module.exports = function (grunt) {
                 tasks: ['jst']
             },
             test: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/{,*/}*_spec.js'],
                 tasks: ['test:true']
             }
         },
@@ -124,8 +127,7 @@ module.exports = function (grunt) {
             all: [
                 'Gruntfile.js',
                 '<%= yeoman.app %>/scripts/{,*/}*.js',
-                '!<%= yeoman.app %>/scripts/vendor/*',
-                'test/spec/{,*/}*.js'
+                '!<%= yeoman.app %>/scripts/vendor/*'
             ]
         },
         mocha: {
@@ -152,7 +154,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'test/spec',
-                    src: '{,*/}*.coffee',
+                    src: '{,*/}*_spec.coffee',
                     dest: '.tmp/spec',
                     ext: '.js'
                 }]
