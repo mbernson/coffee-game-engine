@@ -3,6 +3,7 @@ window.Ld30 =
   Display: {}
   Entities: {}
   Util: {}
+  Views: {}
   init: ->
     console.log 'Ld30 init'
 

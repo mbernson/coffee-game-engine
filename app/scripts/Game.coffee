@@ -7,8 +7,11 @@ class Ld30.Game
         @context = @canvas.getContext('2d')
         @context.imageSmoothingEnabled = @imageSmoothing
 
+        @currentView = new Ld30.Views.TitleScreen()
+        @currentView.render(@context)
+
         @running = false
-        @debug = true
+        @debug = false
 
         @player = new Ld30.Entities.Player
         @input_handler = new Ld30.InputHandler
@@ -16,7 +19,7 @@ class Ld30.Game
     gameLoop: =>
         this.handleInput()
         this.update()
-        this.render()
+        this.render() if @currentView.wantsRendering
 
         # Start the next loop iteration
         requestAnimFrame(this.gameLoop) if @running
@@ -37,13 +40,11 @@ class Ld30.Game
 
         console.log "time:", currentTime, "delta:", @deltaTime if @debug
 
-        @player.update(@deltaTime)
-        this.updateEnemies()
-
-    updateEnemies: ->
+        @currentView.update(@deltaTime)
 
     render: ->
-        @player.draw(@context)
+        @currentView.render(@context)
+        # @player.draw(@context)
 
     start: ->
         chunk = new Ld30.Display.Chunk()
