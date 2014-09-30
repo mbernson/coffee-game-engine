@@ -20,6 +20,7 @@ class Ld30.InputHandler
         @commands.shift()
 
     # Unused
+
     max_length: 10
     trimQueue: ->
         while @commands.length > @max_length

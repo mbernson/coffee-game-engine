@@ -7,7 +7,8 @@ class Ld30.Game
         @context = @canvas.getContext('2d')
         @context.imageSmoothingEnabled = @imageSmoothing
 
-        @currentView = new Ld30.Views.TitleScreen()
+        # @currentView = new Ld30.Views.TitleScreen()
+        @currentView = new Ld30.Views.GameView()
         @currentView.render(@context)
 
         @running = false
@@ -50,8 +51,6 @@ class Ld30.Game
         chunk = new Ld30.Display.Chunk()
         chunk.fill new Ld30.Display.Tile()
 
-        console.log chunk
-
         @running = true
         this.gameLoop() # Kick off the game loop
 
@@ -59,4 +58,4 @@ class Ld30.Game
         @running = false
 
     togglePause: ->
-        if @running this.stop() else @this.start()
+        if @running then this.stop() else @this.start()
