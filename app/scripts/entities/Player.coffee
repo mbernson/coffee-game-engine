@@ -1,10 +1,24 @@
 class Ld30.Entities.Player extends Ld30.Entities.Entity
-    @direction = 0
+    constructor: ->
+        @direction = 55
+        @acceleration = 2
+
+        @width = 32
+        @height = 32
+
+        @x = 40
+        @y = 40
+
+    toRadians: (degrees) ->
+        return degrees / 180 * Math.PI;
+
+    rotate: (amount) ->
+        @direction += amount
+        console.log @direction
 
     move: (x, y) ->
         @x += x
         @y += y
-        console.log 'player moved to', @x, @y
 
     fire: ->
         @fired ||= 0
@@ -12,5 +26,28 @@ class Ld30.Entities.Player extends Ld30.Entities.Entity
         console.log 'player fired', @fired, 'shots so far!'
 
     update: (delta) ->
+        if this.x <= 0 || this.x >= 800 then this.direction += 90
+        if this.y <= 0 || this.y >= 600 then this.direction += 90
+
+        dx = Math.sin(@toRadians(this.direction))
+        dy = -Math.cos(@toRadians(this.direction))
+
+        dx *= this.acceleration
+        dy *= this.acceleration
+
+        this.move(dx, dy)
 
     draw: (context) ->
+        context.save();
+        context.translate(this.x - this.width / 2, this.y - this.height / 2);
+        context.rotate(@toRadians(this.direction));
+        context.drawImage(Ld30.Entities.Player.sprite,
+            -(this.width / 2), -(this.height / 2),
+            this.width, this.height);
+        context.restore();
+
+Ld30.Entities.Player.sprite = ( ->
+    img = new Image()
+    img.src = 'images/ship_large.png'
+    return img
+)();

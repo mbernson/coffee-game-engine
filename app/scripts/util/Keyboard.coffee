@@ -24,6 +24,8 @@ class Ld30.Util.Keyboard
     RIGHT: 39
     DOWN: 40
 
+    SPACE: 32
+
     Q: 81
     E: 69
 

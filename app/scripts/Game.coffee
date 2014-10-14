@@ -7,15 +7,15 @@ class Ld30.Game
         @context = @canvas.getContext('2d')
         @context.imageSmoothingEnabled = @imageSmoothing
 
-        # @currentView = new Ld30.Views.TitleScreen()
-        @currentView = new Ld30.Views.GameView()
-        @currentView.render(@context)
-
         @running = false
         @debug = false
 
-        @player = new Ld30.Entities.Player
-        @input_handler = new Ld30.InputHandler
+        @player = new Ld30.Entities.Player()
+        @input_handler = new Ld30.InputHandler()
+
+        # @currentView = new Ld30.Views.TitleScreen()
+        @currentView = new Ld30.Views.GameView(@player)
+        @currentView.render(@context)
 
     gameLoop: =>
         this.handleInput()
@@ -29,7 +29,7 @@ class Ld30.Game
         @input_handler.handle() # Fetch the current key events
 
         while event = @input_handler.nextCommand()
-            event.execute(@player)
+            event.execute(@player) if event?
 
     deltaTime: 0
     runningTime: 0
@@ -44,6 +44,7 @@ class Ld30.Game
         @currentView.update(@deltaTime)
 
     render: ->
+        @context.clearRect(0, 0, @canvas.width, @canvas.height);
         @currentView.render(@context)
         # @player.draw(@context)
 
