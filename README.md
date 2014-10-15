@@ -1,6 +1,6 @@
 # Ludum Dare 30 Game
 
-This is a zombie game.
+This is my attempt for the 30th Ludum Dare game jam (48 hours). Due to a lack of inspiration, it became a (sort of generic) coffeescript game engine.
 
 ## Running and developing
 

@@ -12,4 +12,4 @@
 
 ## Technical
 
-* Command queue
+* -Command queue-
