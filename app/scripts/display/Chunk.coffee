@@ -1,14 +1,14 @@
 class Ld30.Display.Chunk
-	tiles: []
-	hierarchy: {}
+    tiles: []
+    hierarchy: {}
 
-	constructor: (@width = 16, @height = 16) ->
+    constructor: (@width = 16, @height = 16) ->
 
-	getTile: (x, y) ->
-		@hierarchy?[y]?[x]
+    getTile: (x, y) ->
+        @hierarchy?[y]?[x]
 
-	fill: (tile) ->
-		for y in [0..@height]
-			@hierarchy[y] ||= {}
-			for x in [0..@width]
-				@hierarchy[x] ||= tile
+    fill: (tile) ->
+        for y in [0..@height]
+            @hierarchy[y] ||= {}
+            for x in [0..@width]
+                @hierarchy[x] ||= tile

@@ -1,11 +1,11 @@
 window.Ld30 =
-  Commands: {}
-  Display: {}
-  Entities: {}
-  Util: {}
-  Views: {}
-  init: ->
-    console.log 'Ld30 init'
+    Commands: {}
+    Display: {}
+    Entities: {}
+    Util: {}
+    Views: {}
+    init: ->
+        console.log 'Ld30 init'
 
 # Shim for requestAnimationFrame
 window.requestAnimFrame =
