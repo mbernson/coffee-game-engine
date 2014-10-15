@@ -28,8 +28,8 @@ class Ld30.Game
     handleInput: ->
         @input_handler.handle() # Fetch the current key events
 
-        while event = @input_handler.nextCommand()
-            event.execute(@player) if event?
+        while command = @input_handler.nextCommand()
+            command.execute(@player)
 
     deltaTime: 0
     runningTime: 0
@@ -46,7 +46,6 @@ class Ld30.Game
     render: ->
         @context.clearRect(0, 0, @canvas.width, @canvas.height);
         @currentView.render(@context)
-        # @player.draw(@context)
 
     start: ->
         chunk = new Ld30.Display.Chunk()

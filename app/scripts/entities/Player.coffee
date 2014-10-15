@@ -14,7 +14,6 @@ class Ld30.Entities.Player extends Ld30.Entities.Entity
 
     rotate: (amount) ->
         @direction += amount
-        console.log @direction
 
     move: (x, y) ->
         @x += x
@@ -23,7 +22,6 @@ class Ld30.Entities.Player extends Ld30.Entities.Entity
     fire: ->
         @fired ||= 0
         @fired++
-        console.log 'player fired', @fired, 'shots so far!'
 
     update: (delta) ->
         if this.x <= 0 || this.x >= 800 then this.direction += 90
