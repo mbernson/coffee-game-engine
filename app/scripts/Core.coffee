@@ -1,4 +1,4 @@
-class Ld30.Game
+class Ld30.Core
     chunks: []
 
     imageSmoothing: false
