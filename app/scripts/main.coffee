@@ -30,7 +30,7 @@ document.addEventListener 'DOMContentLoaded', ->
     canvas.width = 800
     canvas.height = 600
 
-    game = window.game = new Ld30.Game(canvas)
+    game = window.game = new Ld30.Core(canvas)
 
     game.start()
 
