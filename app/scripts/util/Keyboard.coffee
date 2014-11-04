@@ -1,23 +1,21 @@
 class Ld30.Util.Keyboard
     pressed: {}
 
-    listen: ->
-
     isDown: (keyCode) ->
         if @pressed.hasOwnProperty(keyCode) then @pressed[keyCode] else false
 
-    onKeyDown: (event) ->
-        @pressed[event.keyCode] = true
+    press: (keyCode) ->
+        @pressed[keyCode] = true
 
-    onKeyUp: (event) ->
-        delete @pressed[event.keyCode]
+    release: (keyCode) ->
+        delete @pressed[keyCode]
 
-    listen: () ->
+    listen: ->
         window.addEventListener 'keyup', (event) =>
-            this.onKeyUp event
+            this.press event.keyCode
 
         window.addEventListener 'keydown', (event) =>
-            this.onKeyDown event
+            this.release event.keyCode
 
     LEFT: 37
     UP: 38

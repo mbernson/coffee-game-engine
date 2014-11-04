@@ -1,27 +1,20 @@
-class KeyboardMock extends Ld30.Util.Keyboard
-    press: (key) ->
-        @pressed[key] = true
-
-    release: (key) ->
-        delete @pressed[key]
-
 class PlayerMock extends Ld30.Entities.Player
     fired: false
 
-    fire: ->
+    fire: =>
         @fired = true
 
-# describe 'Input', ->
-#     it 'Directs input to an appropriate command', ->
-
-describe 'All together', ->
-    it 'Chains', ->
-        @keyboard = new KeyboardMock
+describe 'Keyboard and inputhandler together', ->
+    it 'passes key input to an entity', ->
+        @keyboard = new Ld30.Util.Keyboard
         @player = new PlayerMock
-        @input_handler = new Ld30.InputHandler
+        @input_handler = new Ld30.InputHandler(@keyboard)
 
-        @keyboard.press(KeyboardMock.FIRE)
+        @keyboard.press(@keyboard.SPACE)
 
         @input_handler.handle(@player)
+
+        while command = @input_handler.nextCommand()
+            command.execute(@player)
 
         expect(@player.fired).to.equal(true)

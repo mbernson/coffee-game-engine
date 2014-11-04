@@ -3,9 +3,9 @@ FireCommand = Ld30.Commands.FireCommand
 RotateCommand = Ld30.Commands.RotateCommand
 
 class Ld30.InputHandler
-    constructor: ->
+    constructor: (keyboard) ->
         @commands = []
-        @key = new Ld30.Util.Keyboard
+        @key = keyboard ? keyboard : new Ld30.Util.Keyboard
         @key.listen()
 
     handle: ->
