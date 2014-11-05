@@ -2,9 +2,11 @@
 # such as the game loop, update, and render calls.
 class Ld30.Core
     running: false
-    debug: false
+    debug: false # This will log a ton of data if set to true
 
     imageSmoothing: false
+
+    stats: new Stats()
 
     constructor: (@canvas) ->
         @context = @canvas.getContext('2d')
@@ -17,6 +19,8 @@ class Ld30.Core
         @currentView = new Ld30.Views.GameView(@player)
         @currentView.render(@context)
 
+        document.body.appendChild(@stats.domElement);
+
     # The game loop
 
     then: performance.now()
@@ -24,6 +28,7 @@ class Ld30.Core
     tick: 50 # Amount of milliseconds after which the game updates
 
     gameLoop: =>
+        @stats.begin()
         now = performance.now()
         delta = now - @then
         @buffer += delta
@@ -37,6 +42,7 @@ class Ld30.Core
 
         this.render() if @currentView.wantsRendering
         @then = now
+        @stats.end()
 
         # Start the next loop iteration
         requestAnimFrame(this.gameLoop) if @running
