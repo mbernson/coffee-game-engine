@@ -1,14 +1,14 @@
+# Contains the game core components,
+# such as the game loop, update, and render calls.
 class Ld30.Core
-    chunks: []
+    running: false
+    debug: false
 
     imageSmoothing: false
 
     constructor: (@canvas) ->
         @context = @canvas.getContext('2d')
         @context.imageSmoothingEnabled = @imageSmoothing
-
-        @running = false
-        @debug = false
 
         @player = new Ld30.Entities.Player()
         @input_handler = new Ld30.InputHandler()
@@ -17,10 +17,26 @@ class Ld30.Core
         @currentView = new Ld30.Views.GameView(@player)
         @currentView.render(@context)
 
+    # The game loop
+
+    then: performance.now()
+    buffer: 0
+    tick: 50 # Amount of milliseconds after which the game updates
+
     gameLoop: =>
-        this.handleInput()
-        this.update()
+        now = performance.now()
+        delta = now - @then
+        @buffer += delta
+
+        console.log "time: ", now, " delta: ", delta if @debug
+
+        while(@buffer >= @tick)
+            console.log "updated at:", now, " tick: ", @tick if @debug
+            this.update(@tick)
+            @buffer -= @tick;
+
         this.render() if @currentView.wantsRendering
+        @then = now
 
         # Start the next loop iteration
         requestAnimFrame(this.gameLoop) if @running
@@ -31,17 +47,10 @@ class Ld30.Core
         while command = @input_handler.nextCommand()
             command.execute(@player)
 
-    deltaTime: 0
-    runningTime: 0
+    update: (delta) ->
+        this.handleInput(delta)
 
-    update: ->
-        currentTime = performance.now()
-        @deltaTime = Math.abs(currentTime - @runningTime)
-        @runningTime = currentTime
-
-        console.log "time:", currentTime, "delta:", @deltaTime if @debug
-
-        @currentView.update(@deltaTime)
+        @currentView.update(delta)
 
     render: ->
         @context.clearRect(0, 0, @canvas.width, @canvas.height);

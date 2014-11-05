@@ -5,10 +5,11 @@ RotateCommand = Ld30.Commands.RotateCommand
 class Ld30.InputHandler
     constructor: (keyboard) ->
         @commands = []
-        @key = keyboard ? keyboard : new Ld30.Util.Keyboard
+        if keyboard then @key = keyboard
+        else @key = new Ld30.Util.Keyboard
         @key.listen()
 
-    handle: ->
+    handle: (delta) ->
         if @key.isDown(@key.LEFT)  then @commands.push new MoveCommand(-10, 0)
         if @key.isDown(@key.RIGHT) then @commands.push new MoveCommand(10, 0)
 
@@ -22,10 +23,3 @@ class Ld30.InputHandler
 
     nextCommand: ->
         @commands.shift()
-
-    # Unused
-
-    max_length: 10
-    trimQueue: ->
-        while @commands.length > @max_length
-            @commands.shift()
