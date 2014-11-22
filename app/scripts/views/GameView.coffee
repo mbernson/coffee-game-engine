@@ -3,6 +3,7 @@ class Ld30.Views.GameView extends Ld30.Views.View
 
     constructor: (width, height) ->
         @player = new Ld30.Entities.Player()
+        # Set the spawn location
         @player.x = width / 2
         @player.y = height / 2
 
