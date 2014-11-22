@@ -3,13 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Ld30</title>
+
+        <title>Ld48 Game</title>
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
+
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
@@ -21,22 +24,24 @@
 
         <canvas></canvas>
 
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/underscore/underscore.js"></script>
-
         <!-- build:js scripts/vendor/Stats.js -->
         <script src="scripts/vendor/Stats.js"></script>
         <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/**/*.js -->
-        <script src="scripts/main.js"></script>
+        <!-- build:js({.tmp,app}) scripts/all.js -->
+
+        <!-- Game.js contains the namespace declaration -->
+        <script src="scripts/Game.js"></script>
+
+        <!-- Include any new scripts here -->
 
         <script src="scripts/commands/Command.js"></script>
         <script src="scripts/commands/MoveCommand.js"></script>
         <script src="scripts/commands/RotateCommand.js"></script>
         <script src="scripts/commands/FireCommand.js"></script>
+        <script src="scripts/commands/ThrottleCommand.js"></script>
 
-        <script src="scripts/Util.js"></script>
+        <script src="scripts/util/Performance.js"></script>
         <script src="scripts/util/Keyboard.js"></script>
         <script src="scripts/util/Spritesheet.js"></script>
 
@@ -54,7 +59,7 @@
 
         <script src="scripts/Core.js"></script>
 
-        <script src="scripts/templates.js"></script>
+        <script src="scripts/main.js"></script>
         <!-- endbuild -->
-</body>
+    </body>
 </html>

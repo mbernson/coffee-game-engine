@@ -6,14 +6,20 @@ class Ld30.Entities.Player extends Ld30.Entities.Entity
         @width = 32
         @height = 32
 
-        @x = 40
-        @y = 40
+        @x = 0
+        @y = 0
 
     toRadians: (degrees) ->
         return degrees / 180 * Math.PI;
 
     rotate: (amount) ->
         @direction += amount
+
+    stop: ->
+        @acceleration = 0
+
+    accelerate: (amount) ->
+        @acceleration += amount
 
     move: (x, y) ->
         @x += x

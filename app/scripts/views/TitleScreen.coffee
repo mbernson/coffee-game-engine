@@ -7,6 +7,6 @@ class Ld30.Views.TitleScreen extends Ld30.Views.View
     drawHeader: (context) ->
         context.font = '64pt Arial'
         context.textAlign = 'center'
-        context.fillText("Zombie game", 400, 120)
+        context.fillText("Game title", 400, 120)
 
     drawButtons: (context) ->

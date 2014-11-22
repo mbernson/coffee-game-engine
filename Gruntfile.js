@@ -320,7 +320,7 @@ module.exports = function (grunt) {
         'createDefaultTemplate',
         'jst',
         'useminPrepare',
-        'imagemin',
+        // 'imagemin',
         'htmlmin',
         'concat',
         'cssmin',
