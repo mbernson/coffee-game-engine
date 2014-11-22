@@ -12,10 +12,10 @@ class Ld30.Util.Keyboard
 
     listen: ->
         window.addEventListener 'keyup', (event) =>
-            this.press event.keyCode
+            this.release event.keyCode
 
         window.addEventListener 'keydown', (event) =>
-            this.release event.keyCode
+            this.press event.keyCode
 
     LEFT: 37
     UP: 38
