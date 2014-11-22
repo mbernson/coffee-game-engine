@@ -1,48 +1,22 @@
-class Ld30.Entities.Player extends Ld30.Entities.Entity
+Bullet = Ld30.Entities.Bullet
 
+class Ld30.Entities.Player extends Ld30.Entities.Entity
     width: 32
     height: 32
-    direction: 45
-    acceleration: 2
-
-    toRadians: (degrees) ->
-        return degrees / 180 * Math.PI
-
-    rotate: (amount) ->
-        @direction += amount
-
-    stop: ->
-        @acceleration = 0
-
-    accelerate: (amount) ->
-        @acceleration += amount
 
     move: (x, y) ->
         @x += x
-        @y += y
 
-    fire: ->
+    fire: (field) ->
         @fired ||= 0
         @fired++
-
-    update: (delta) ->
-        if this.x <= 0 || this.x >= 800 then this.direction += 90
-        if this.y <= 0 || this.y >= 600 then this.direction += 90
-
-        dx = Math.sin(@toRadians(this.direction))
-        dy = -Math.cos(@toRadians(this.direction))
-
-        dx *= this.acceleration
-        dy *= this.acceleration
-
-        this.move(dx, dy)
+        field.bullets.push(new Bullet(@x - 8, @y - 12))
 
     draw: (context) ->
         context.save()
         context.translate(this.x - this.width / 2, this.y - this.height / 2)
-        context.rotate(@toRadians(this.direction))
         context.drawImage(Ld30.Entities.Player.sprite,
-            -(this.width / 2), -(this.height / 2),
+            -(this.width / 2) + 8, -(this.height / 2) + 8,
             this.width, this.height)
         context.restore()
 

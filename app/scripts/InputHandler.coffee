@@ -11,8 +11,11 @@ class Ld30.InputHandler
         @key.listen()
 
     handle: (delta) ->
-        # Add your commands in the form of:
-        # if @key.isDown(@key.SOMETHIGN) then @commands.push new MoveCommand(x, y)
+        step = 4
+        if @key.isDown(@key.LEFT)  then @commands.push new MoveCommand(-step, 0)
+        if @key.isDown(@key.RIGHT) then @commands.push new MoveCommand(step, 0)
+
+        if @key.isDown(@key.SPACE) then @commands.push new FireCommand()
 
     nextCommand: ->
         @commands.shift()
