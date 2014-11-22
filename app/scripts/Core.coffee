@@ -58,9 +58,6 @@ class Ld30.Core
         @currentView.render(@context)
 
     start: ->
-        chunk = new Ld30.Display.Chunk()
-        chunk.fill new Ld30.Display.Tile()
-
         @running = true
         @then = performance.now()
         this.gameLoop() # Kick off the game loop
