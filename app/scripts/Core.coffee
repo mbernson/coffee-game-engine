@@ -29,7 +29,7 @@ class Ld30.Core
 
     gameLoop: =>
         @stats.begin()
-        now = performance.now()
+        now = currentTimeMilliseconds()
         delta = now - @then # Time difference from the last tick
         @buffer += delta    # Add the amount of passed time to the buffer
 
@@ -59,7 +59,7 @@ class Ld30.Core
 
     start: ->
         @running = true
-        @then = performance.now()
+        @then = currentTimeMilliseconds()
         this.gameLoop() # Kick off the game loop
 
     stop: ->

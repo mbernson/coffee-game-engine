@@ -6,7 +6,9 @@ window.requestAnimFrame =
     (callback) ->
         window.setTimeout(callback, 1000 / 60)
 
-window.currentTimeMilliseconds =
-    (window.performance && performance.now) ||
-    ->
-        new Date().getMilliseconds();
+window.currentTimeMilliseconds = (->
+    if window.performance && window.performance.now
+        return -> window.performance.now()
+    else
+        return -> new Date().getMilliseconds()
+)()
