@@ -21,7 +21,8 @@ A browser window will open automatically.
 ## Testing
 
 Tests are written using [Mocha](http://mochajs.org) and [Chai](http://chaijs.com), and are located in the `test/` directory.
-Run `grunt test` to execute them.
+
+First, run `bower install` in the `test/` directory. After that, you can run `grunt test` to execute the tests.
 
 ## Deployment
 

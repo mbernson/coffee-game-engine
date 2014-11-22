@@ -1,5 +1,5 @@
 {
-  "name": "Ld30",
+  "name": "coffee-game-engine",
   "private": true,
   "dependencies": {
     "chai": "~1.8.0",

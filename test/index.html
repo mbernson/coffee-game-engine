@@ -7,6 +7,7 @@
 </head>
 <body>
     <div id="mocha"></div>
+
     <script src="bower_components/mocha/mocha.js"></script>
     <script>mocha.setup('bdd')</script>
     <script src="bower_components/chai/chai.js"></script>
@@ -16,28 +17,38 @@
         var should = chai.should();
     </script>
 
-    <!-- include source files here... -->
-    <script src="scripts/main.js"></script>
+    <!-- Game.js contains the namespace declaration -->
+    <script src="scripts/Game.js"></script>
+
+    <!-- Include any new scripts here -->
 
     <script src="scripts/commands/Command.js"></script>
     <script src="scripts/commands/MoveCommand.js"></script>
+    <script src="scripts/commands/RotateCommand.js"></script>
     <script src="scripts/commands/FireCommand.js"></script>
+    <script src="scripts/commands/ThrottleCommand.js"></script>
 
+    <script src="scripts/util/Performance.js"></script>
     <script src="scripts/util/Keyboard.js"></script>
     <script src="scripts/util/Spritesheet.js"></script>
+
     <script src="scripts/InputHandler.js"></script>
 
     <script src="scripts/entities/Entity.js"></script>
     <script src="scripts/entities/Player.js"></script>
 
-    <script src="scripts/display/Tile.js"></script>
-    <script src="scripts/display/Chunk.js"></script>
+    <script src="scripts/views/View.js"></script>
+    <script src="scripts/views/TitleScreen.js"></script>
+    <script src="scripts/views/GameView.js"></script>
 
-    <script src="scripts/Game.js"></script>
+    <script src="scripts/Core.js"></script>
 
-    <!-- include spec files here... -->
+    <script src="scripts/main.js"></script>
+
+
+    <!-- Include spec files here -->
     <script src="spec/command_spec.js"></script>
-    <script src="spec/dummy_spec.js"></script>
+    <script src="spec/example_spec.js"></script>
 
     <script>
     if (navigator.userAgent.indexOf('PhantomJS') < 0) {
