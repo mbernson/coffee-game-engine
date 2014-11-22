@@ -10,4 +10,13 @@ document.addEventListener 'DOMContentLoaded', ->
 
     game.start()
 
+    pause = document.createElement('button')
+    pause.textContent = 'Pause'
+    pause.addEventListener 'click', (event) =>
+        if game.running then game.stop() else game.start()
+        event.target.textContent = if game.running then 'Pause' else 'Resume'
+        true
+
+    document.body.appendChild(pause)
+
     true
