@@ -1,6 +1,5 @@
 class Ld30.Views.TitleScreen extends Ld30.Views.View
     render: (context) ->
-        console.log 'title screen render'
         @drawHeader context
         @drawButtons context
 
