@@ -4,13 +4,18 @@ class Ld30.Core
     running: false
     debug: false # This will log a ton of data to the console if set to true
 
-    imageSmoothing: false
+    imageSmoothing: true
 
     stats: new Stats()
 
     constructor: (@canvas) ->
         @context = @canvas.getContext('2d')
         @context.imageSmoothingEnabled = @imageSmoothing
+
+        if @context.webkitImageSmoothingEnabled
+            @context.webkitImageSmoothingEnabled = @imageSmoothing;
+        if @context.mozImageSmoothingEnabled
+            @context.mozImageSmoothingEnabled = @imageSmoothing;
 
         # The current view contains everything specific to the current game "stage",
         # such as player or AI entities, the current keyboard handler, etc.
