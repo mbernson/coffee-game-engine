@@ -14,3 +14,5 @@ class Ld30.Entities.Entity
 
     collidesWith: (entity) ->
         return Ld30.entitiesColliding(this, entity)
+
+class Ld30.Entities.Box extends Ld30.Entities.Entity

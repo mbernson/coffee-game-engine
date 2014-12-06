@@ -1,4 +1,5 @@
 Invader = Ld30.Entities.Invader
+Bullet = Ld30.Entities.Bullet
 
 class Ld30.Views.GameView extends Ld30.Views.View
     wantsRendering: true
@@ -17,28 +18,39 @@ class Ld30.Views.GameView extends Ld30.Views.View
         this.spawnEnemies()
 
     removeEntity: (e) =>
-        index = @entities.indexOf(e)
-        @entities.splice(index, 1)
+        if e instanceof Bullet
+            list = @bullets
+        else
+            list = @entities
+
+        index = list.indexOf(e)
+        list.splice(index, 1)
 
     spawnEnemies: ->
         rows = 4
         cols = 6
         padding_x = 49
         padding_y = 40
+        i = 0
 
         for y in [1..rows]
             for x in [1..cols]
                 invader = new Invader(x * 8 + x * padding_x, y * 8 + y * padding_y)
+                invader.position = i
+                invader.row_size = cols
                 @entities.push(invader)
+                i++
 
-    render: (context) =>
+        console.log @entities
+
+    render: (context) ->
         @player.draw(context)
 
         bullet.draw(context) for bullet in @bullets
 
         entity.draw(context) for entity in @entities
 
-    update: (delta) =>
+    update: (delta) ->
         @input_handler.handle(delta) # Fetch key events from the user
 
         # Let the player execute all unhandled commands
@@ -49,12 +61,23 @@ class Ld30.Views.GameView extends Ld30.Views.View
 
         bullet.update(delta) for bullet in @bullets
 
+        removeEntity = this.removeEntity
         for entity in @entities
             unless entity == null || entity == undefined
                 entity.update(delta, this)
-                this.checkCollisions(entity)
+                this.checkBulletCollisions(entity, (e1, e2) ->
+                    removeEntity(e1)
+                    removeEntity(e2)
+                )
 
-    checkCollisions: (entity) =>
+        if this.checkBulletCollisions(@player)
+            window.game.stop()
+            alert 'You were hit by a bullet!'
+
+    checkBulletCollisions: (entity, callback) ->
         for bullet in @bullets
             if bullet.collidesWith(entity)
-                this.removeEntity(entity)
+                callback(entity, bullet) if callback
+                return true
+
+        return false
