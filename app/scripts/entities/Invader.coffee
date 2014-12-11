@@ -27,7 +27,7 @@ class Ld30.Entities.Invader extends Ld30.Entities.Entity
             if ((@position % @row_size) == (entity.position % @row_size)) && entity.position > @position
                 return
 
-        if Math.random() > 0.999
+        # if Math.random() > 0.999
             # This is currently buggy :(
             # this.fire(field)
 
